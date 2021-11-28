@@ -1,0 +1,66 @@
+{% extends 'user.html.twig' %}
+
+{% block title %}GERER LES USERS
+{% endblock %}
+
+{% block body %}
+
+<a href="{{path("app_register")}}" class="btn shadow-1 rounded-1 blue">
+	Ajouter un User</a>
+{% if users %}
+	<table id="users" table class=" table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Email</th>
+				<th>Service</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for users in users %}
+				<tr>
+					<td>
+						{{users.id}}
+					</td>
+					<td>{{users.nom}}
+					</td>
+					<td>
+						{{users.prenom}}
+					</td>
+					<td>{{users.email}}
+					</td>
+					<td>{{users.service}}
+					</td>
+					<td>paris</td>
+				</tr>
+
+			{% endfor %}
+
+			{# On crée des variables personnalisées #}
+			{% set queryParams = app.request.query.all %}
+			{% set queryString = queryParams|filter((v, k) => k != "page" and k != "ajax")|url_encode %}
+
+
+			<ul class="pagination">
+				<li class="{{ (page == 1) ? 'disabled' : '' }}">
+					<a href="?page=1&{{queryString}}">
+						<i class="fas fa-step-backward"></i>
+					</a>
+				</li>
+				<li class="{{ (page == 1) ? 'disabled' : '' }}">
+					<a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{queryString}}">
+						<i class="fas fa-angle-left"></i>
+					</a>
+				</li>
+				{% set pages = (total / limit)|round(0, 'ceil') %}
+				{% for item in 1..pages %}
+					<li class="{{ (page == item) ? 'active' : '' }}">
+						<a href="?page={{ item }}&{{queryString}}">{{ item }}</a>
+					</li>
+				{% endfor %}
+				<li class="{{ (page == pages) ? 'disabled' : '' }}">
+					<a

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+{% block stylesheets %}
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="{{ asset ('css/sb-admin-2.min.css')}}" >
+
+    <!-- Bootstrap core CSS     -->
+    <link rel="stylesheet" href="{{ asset ('css/bootstrap.min.css')}}"/>
+
+    <!-- Animation library for notifications   -->
+    <link rel="stylesheet" href="{{ asset ('css/animate.min.css')}}"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link rel="stylesheet" href="assets/css/light-bootstrap-dashboard.css?v=1.4.0"/>
+{% endblock %}
+</head>
+
+<body id="page-top">
+
+{{  include ('include/header.html.twig') }}
+
+{% block body %}
+    
+{% endblock %}
+
+{{  include ('include/footer.html.twig') }}
+
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset ('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset ('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset ('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset ('js/sb-admin-2.min.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset ('vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset ('js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{ asset ('js/demo/chart-pie-demo.js')}}"></script>
+		{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les catégory
+{% endblock %}
+
+{% block body %}
+	<h1>Gérer les catégories</h1>
+	<a href="{{ path("admin_category_ajout") }}" class="btn blue">Ajouter une catégory</a>
+	<table class="table striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Titre</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in category %}
+				<tr>
+					<td>{{category.id}}</td>
+					<td>{{category.titre}}</td>
+					<td class="text-center">
+						<a href="{{ path("admin_category_modifier", {id: category.id}) }}" class="btn blue">Modifier</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

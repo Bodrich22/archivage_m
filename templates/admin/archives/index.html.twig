@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GERER LES ARCHIVES
+{% endblock %}
+
+{% block body %}
+	<div class="col-xs1">
+		<p>Filtrer</p>
+		<form id="filters">
+			{% for service in service %}
+				{# On vérifie si la service est dans les paramètres #}
+				{% if queryParams is not empty and queryParams.service is defined %}
+					{% set checked = (service.id in queryParams.service) ? "checked" : "" %}
+				{% else %}
+					{% set checked = "" %}
+				{% endif %}
+
+				<p><input type="checkbox" name="services[]" id="cat{{service.id}}" value="{{service.id}}" {{checked}}>
+					<label for="cat{{service.id}}">{{service.title}}</label>
+				</p>
+			{% endfor %}
+			<input type="hidden" name="page" value="{{page}}">
+		</form>
+	</div>
+
+	<a href="{{path("admin_archives_ajout")}}" class="btn shadow-1 rounded-1 blue">
+		Ajouter une Archive</a>
+	{% if archives %}
+		<table id="archives" table class=" table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>code_archive</th>
+					<th>Intitule_archive</th>
+					<th>Catégorie</th>
+					<th>Service</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for archive in archives %}
+					<tr>
+						<td>
+							{{archive.id}}
+						</td>
+						<td>{{archive.CodeArchive}}
+						</td>
+						<td>
+							{{archive.IntituleArchive}}
+						</td>
+						<td>{{archive.category.titre}}
+						</td>
+						<td>{{archive.service.titre}}
+						</td>
+						<td>paris</td>
+					</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+
+	{% endif %}
+
+	<div class="col-xs1 col-sm4" id="content">
+		{% include "admin/archives/content.html.twig" %}
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/filters.js') }}"></script>
+{% endblock %}

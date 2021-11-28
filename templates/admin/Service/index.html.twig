@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les services
+{% endblock %}
+
+{% block body %}
+	<h1>Gérer les services
+	</h1>
+	<a href="{{ path("admin_service_ajout") }}" class="btn blue">Ajouter une service
+	</a>
+	<table class="table striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for service  in services %}
+				<tr>
+					<td>{{service.id}}</td>
+					<td>{{service.titre}}</td>
+					<td class="text-center">
+						<a href="{{ path("admin_service_modifier", {id: service.id}) }}" class="btn blue">Modifier</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GERER LES ARCHIVES
+{% endblock %}
+
+{% block body %}
+
+<div class="col-xs1">
+            <p>Filtrer</p>
+            <form id="filters">
+                
+            </form>
+        </div>
+
+	<a href="{{path("admin_archives_ajout")}}" class="btn shadow-1 rounded-1 blue">
+		Ajouter une Archive</a>
+	{% if archives %}
+		<table id="archives" table class=" table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>code_archive</th>
+					<th>Intitule_archive</th>
+					<th>Catégorie</th>
+					<th>Service</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for archive in archives %}
+					<tr>
+						<td>
+							{{archive.id}}
+						</td>
+						<td>{{archive.CodeArchive}}
+						</td>
+						<td>
+							{{archive.IntituleArchive}}
+						</td>
+						<td>{{archive.category.titre}}
+						</td>
+						<td>{{archive.service.titre}}
+						</td>
+						<td>paris</td>
+					</tr>
+
+				{% endfor %}
+
+
+{# On crée des variables personnalisées #}
+    {% set queryParams = app.request.query.all %}
+    {% set queryString = queryParams|filter((v, k) => k != "page" and k != "ajax")|url_encode %}
+
+
+    <ul class="pagination">
+        <li class="{{ (page == 1) ? 'disabled' : '' }}">
+            <a href="?page=1&{{queryString}}">
+                <i class="fas fa-step-backward"></i>
+            </a>
+        </li>    
+        <li class="{{ (page == 1) ? 'disabled' : '' }}">
+            <a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{queryString}}">
+                <i class="fas fa-angle-left"></i>
+            </a>
+        </li>
+        {% set pages = (total / limit)|round(0, 'ceil') %}
+        {% for item in 1..pages %}
+            <li class="{{ (page == item) ? 'active' : '' }}">
+                <a href="?page={{ item }}&{{queryString}}">{{ item }}</a>
+            </li>
+        {% endfor %}
+        <li class="{{ (page == pages) ? 'disabled' : '' }}">
+            <a href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}&{{queryString}}">
+                <i class="fas fa-angle-right"></i>
+            </a>
+        </li>
+        <li class="{{ (page == pages) ? 'disabled' : '' }}">
+            <a href="?page={{ pages }}&{{queryString}}">
+                <i class="fas fa-step-forward"></i>
+            </a>
+        </li>
+
+    </ul>
+
+			</tbody>
+
+
+		</table>
+		{% else %}
+	{% endif %}
+
+</div>
+{% endblock %}

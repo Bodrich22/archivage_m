@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="megakit,business,company,agency,multipurpose,modern,bootstrap4">
+
+		<meta name="author" content="themefisher.com">
+
+		<title>Megakit| Html5 Agency template</title>
+
+		{% block stylesheets %}
+			<!-- bootstrap.min css -->
+			<link
+			rel="stylesheet" href="{{ asset ('user/plugins/bootstrap/css/bootstrap.min.css')}}">
+			<!-- Icon Font Css -->
+			<link rel="stylesheet" href="{{ asset ('user/plugins/themify/css/themify-icons.css')}}">
+			<link rel="stylesheet" href="{{ asset ('user/plugins/fontawesome/css/all.css')}}">
+			<link
+			rel="stylesheet" href="{{ asset ('user/plugins/magnific-popup/dist/magnific-popup.css')}}">
+			<!-- Owl Carousel CSS -->
+			<link rel="stylesheet" href="{{ asset ('user/plugins/slick-carousel/slick/slick.css')}}">
+			<link
+			rel="stylesheet" href="{{ asset ('user/plugins/slick-carousel/slick/slick-theme.css')}}">
+
+			<!-- Main Stylesheet -->
+			<link rel="stylesheet" href="{{ asset ('user/css/style.css')}}">
+		{% endblock %}
+	</head>
+
+	<body id="page-top">
+
+		{{  include ('user_f/user_header.html.twig') }}
+
+		{% block body %}{% endblock %}
+
+		{{  include ('user_f/user_footer.html.twig') }}
+
+		{% block javascripts %}
+			<!-- 
+															    Essential Scripts
+															    =====================================-->
+
+
+			<!-- Main jQuery --><script src="{{ asset ('user/plugins/jquery/jquery.js')}}"> </script>
+			<script src="{{ asset ('user/js/contact.js')}}"></script>
+			<!-- Bootstrap 4.3.1 -->
+			<script src="{{ asset ('user/plugins/bootstrap/js/popper.js')}}"></script>
+			<script src="{{ asset ('user/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+			<!--  Magnific Popup-->
+			<script src="{{ asset ('user/plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
+			<!-- Slick Slider -->
+			<script src="{{ asset ('user/plugins/slick-carousel/slick/slick.min.js')}}"></script>
+			<!-- Counterup -->
+			<script src="{{ asset ('user/plugins/counterup/jquery.waypoints.min.js')}}"></script>
+			<script src="{{ asset ('user/plugins/counterup/jquery.counterup.min.js')}}"></script>
+
+			<!-- Google Map -->
+			<script src="{{ asset ('user/plugins/google-map/map.js')}}"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+			<script src="{{ asset ('user/js/script.js')}}"></script>
+		{% endblock %}
+	</body>
+</html>
